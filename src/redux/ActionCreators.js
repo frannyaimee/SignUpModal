@@ -12,7 +12,6 @@ export const postInfo = (
     telnum: telnum,
     email: email,
   };
-
   return fetch(baseUrl + "customer", {
     method: "POST",
     body: JSON.stringify(newCustomer),
@@ -21,22 +20,6 @@ export const postInfo = (
     },
     credentials: "same-origin"
   })
-    .then(
-      response => {
-        if (response.ok) {
-          return response;
-        } else {
-          var error = new Error(
-            "Error " + response.status + ": " + response.statusText
-          );
-          error.response = response;
-          throw error;
-        }
-      },
-      error => {
-        throw error;
-      }
-    )
     .then(response => response.json())
     .then(response =>
       alert("Thank you for your interest" + JSON.stringify(response))
